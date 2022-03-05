@@ -22,11 +22,14 @@ class TennisBase():
         return self.p1Points==self.p2Points
 
     def deuceScore(self, points):
-        return {
+        if points < 3:
+            return {
                 0 : "Love-All",
                 1 : "Fifteen-All",
                 2 : "Thirty-All",
-            }.get(points, "Deuce")
+            }[points]
+
+        return "Deuce"
 
     def isWinOrAdvantage(self):
         return self.p1Points>=4 or self.p2Points>=4

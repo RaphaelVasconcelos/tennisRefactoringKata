@@ -17,16 +17,8 @@ class TennisGame2(TennisBase):
 
     def score(self):
         result = ""
-        if (self.p1Points == self.p2Points and self.p1Points < 3):
-            if (self.p1Points==0):
-                result = "Love"
-            if (self.p1Points==1):
-                result = "Fifteen"
-            if (self.p1Points==2):
-                result = "Thirty"
-            result += "-All"
-        if (self.p1Points==self.p2Points and self.p1Points>2):
-            result = "Deuce"
+        if (self.isDeuce()):
+            return self.deuceScore(self.p1Points)
 
         P1res = ""
         P2res = ""
