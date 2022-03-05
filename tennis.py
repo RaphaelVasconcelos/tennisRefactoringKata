@@ -33,7 +33,7 @@ class TennisGame1:
         else:
             return "Win for " + self.player2Name
 
-    def tempScore(self, p1points, p2points):
+    def normalScore(self, p1points, p2points):
         pointNames = {
             0 : "Love",
             1 : "Fifteen",
@@ -47,14 +47,12 @@ class TennisGame1:
         return f'{p1PointName}-{p2PointName}'
 
     def score(self):
-        result = ""
         if (self.p1points==self.p2points):
-            result = self.matchDeuced(self.p1points)
+            return self.matchDeuced(self.p1points)
         elif (self.p1points>=4 or self.p2points>=4):
-            result = self.advantageScored(self.p1points, self.p2points)
+            return self.advantageScored(self.p1points, self.p2points)
         else:
-            result = self.tempScore(self.p1points, self.p2points)
-        return result
+            return self.normalScore(self.p1points, self.p2points)
 
 class TennisGame2:
     def __init__(self, player1Name, player2Name):
