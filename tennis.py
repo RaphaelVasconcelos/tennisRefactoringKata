@@ -23,6 +23,7 @@ class TennisGame1:
 
     def advantageScored(self, p1points, p2points):
         minusResult = p1points - p2points
+
         if (minusResult==1):
           return "Advantage " + self.player1Name
         elif (minusResult ==-1):
@@ -32,23 +33,18 @@ class TennisGame1:
         else:
             return "Win for " + self.player2Name
 
-    def tempScore(self, p1points, p2points, result):
-        tempScore=0
-        for i in range(1,3):
-                if (i==1):
-                    tempScore = p1points
-                else:
-                    result+="-"
-                    tempScore = p2points
-                
-                result += {
-                    0 : "Love",
-                    1 : "Fifteen",
-                    2 : "Thirty",
-                    3 : "Forty",
-                }[tempScore]
-        return result
+    def tempScore(self, p1points, p2points):
+        pointNames = {
+            0 : "Love",
+            1 : "Fifteen",
+            2 : "Thirty",
+            3 : "Forty",
+        }
 
+        p1PointName = pointNames[p1points]
+        p2PointName = pointNames[p2points]
+
+        return f'{p1PointName}-{p2PointName}'
 
     def score(self):
         result = ""
@@ -57,7 +53,7 @@ class TennisGame1:
         elif (self.p1points>=4 or self.p2points>=4):
             result = self.advantageScored(self.p1points, self.p2points)
         else:
-            result = self.tempScore(self.p1points, self.p2points, result)
+            result = self.tempScore(self.p1points, self.p2points)
         return result
 
 class TennisGame2:
